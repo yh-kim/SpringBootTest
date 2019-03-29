@@ -12,5 +12,16 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
+notifications:
+  email: false    # default notification method
+  slack:
+    secure: YaHabibfwv/uUuHOQgkHintOOuMFS+k5IcL0MZ9Ky7UoFj/F/JAUTk5uAnfv0LkWWWwnMd4q/C53f3dC0mjAKl4jsVMzLFmnSUyNAcLxKhhIbn+NAkHlJBlnb1aPHyBUVwDwnrcZ4fW47Hwn5KSNRiJQ5GeWcHLwt1c0v4zug7kkXnveYBnY/KPFk4Qwfx6hyXQpYEqOuA/3hmHoTzuOs5q1a5Bn3BXsUyOZ/r8vaCwfC5K7cCYOFd+q6av0iG8jjrecll7HUEWWh300F1IuHD4t7lr/OCo6tbxXAQCdyuhJ0CFVHFPERWbPurW8YJF1Yo388pJsAG55HvszimnCGNQ9xPjQDehkgOHhMrPb4GPwEW1Mp5F9cyfJujHvqYxPixs57XGTKn1aPCBj+y8aV+0PPvXVYfGOnv+Iab6g0gECv3EN3rb//98SQJMKvLspNrtAg147hu4eBO5a0lU15xnaGDDKvBMGVO/roEH1K750YjbeC0aeec49lGN3gl1WykMTXd3e8hZwk2e+x+Wfqp3OoLh8mpoJSUxyF2oBrt3BEvb1/ig5I68EeRxaomxDtX5GeJVtS7F3wL9Ah7yvjRijO+mJsGpoQLDf5b6BQ7FIwo8O7dW3vtex7riPZRTpbAnYayXbsc0VMTJrhQMo+MkultSofS6ZBeEXxL0NYrw=
+    on_success: always  # change: send a notification when the build status changes.
+    on_failure: always  # always: always send a notification.
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
+
 # clean 후 Build (Build시 자동으로 test 수행)
 script: "./gradlew clean build"
